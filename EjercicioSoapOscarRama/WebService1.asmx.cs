@@ -16,7 +16,9 @@ namespace EjercicioSoapOscarRama
     {
         
         private PersonaSoapEntities1 db = new PersonaSoapEntities1();
-
+        /*
+         * DATE: 25/02/21
+         */
         [WebMethod]
         public List<personasEjercicio> Persona()
         {
@@ -25,53 +27,60 @@ namespace EjercicioSoapOscarRama
 
             return per.ToList();
         }
+        /*
+         * CREATE
+         */
         [WebMethod]
         public List<personasEjercicio> createPersona(personasEjercicio persona)
         {
-            var personas = db.personasEjercicios;
+            var per = db.personasEjercicios;
 
-            personas.Add(persona);
+            per.Add(persona);
 
             db.SaveChanges();
 
-            return personas.ToList();
+            return per.ToList();
         }
-
+        /*
+         * UPDATE
+         */
         [WebMethod]
         public List<personasEjercicio> updatePersona(personasEjercicio persona)
         {
 
-            var personas = db.personasEjercicios;
+            var per = db.personasEjercicios;
 
-            var personaUpdate = personas.Where(p => p.Nif == persona.Nif).First();
+            var perUpdate = per.Where(p => p.Nif == persona.Nif).First();
 
-            personaUpdate.Nombre = persona.Nombre;
-            personaUpdate.Apellidos = persona.Apellidos;
-            personaUpdate.Nif = persona.Nif;
-            personaUpdate.Direccion = persona.Direccion;
-            personaUpdate.Ciudad = persona.Ciudad;
-            personaUpdate.Estado_Civil = persona.Estado_Civil;
-            personaUpdate.Sexo = persona.Sexo;
-            personaUpdate.Codigo_Postal= persona.Codigo_Postal;
-            personaUpdate.Provincia = persona.Provincia;
+            perUpdate.Nombre = persona.Nombre;
+            perUpdate.Apellidos = persona.Apellidos;
+            perUpdate.Nif = persona.Nif;
+            perUpdate.Direccion = persona.Direccion;
+            perUpdate.Ciudad = persona.Ciudad;
+            perUpdate.Estado_Civil = persona.Estado_Civil;
+            perUpdate.Sexo = persona.Sexo;
+            perUpdate.Codigo_Postal= persona.Codigo_Postal;
+            perUpdate.Provincia = persona.Provincia;
 
             db.SaveChanges();
 
-            return personas.ToList();
+            return per.ToList();
         }
-
+        /*
+         * DELETE
+         */
         [WebMethod]
         public List<personasEjercicio> deletePersona(personasEjercicio persona)
         {
-            var personas = db.personasEjercicios;
+            var per = db.personasEjercicios;
 
-            var personaDelete = personas.Where(p => p.Nif == persona.Nif).First();
+            var personaDelete = per.Where(p => p.Nif == persona.Nif).First();
 
-            personas.Remove(personaDelete);
+            per.Remove(personaDelete);
 
             db.SaveChanges();
 
-            return personas.ToList();
+            return per.ToList();
         }
     }
 }
