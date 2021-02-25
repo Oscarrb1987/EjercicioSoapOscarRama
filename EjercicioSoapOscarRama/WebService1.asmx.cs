@@ -25,7 +25,7 @@ namespace EjercicioSoapOscarRama
 
             return per.ToList();
         }
-
+        [WebMethod]
         public List<personasEjercicio> createPersona(personasEjercicio persona)
         {
             var personas = db.personasEjercicios;
